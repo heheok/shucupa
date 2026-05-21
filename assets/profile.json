@@ -1,0 +1,48 @@
+{
+  "name": "Sibel Açıkalın Akgün",
+  "title": "Illustrator & Sculptor",
+  "location": "Istanbul, Türkiye",
+  "status": "Available for freelance",
+  "links": {
+    "instagram": "https://www.instagram.com/sibelacikalinakgun/",
+    "instagram_alt": "https://www.instagram.com/sibel_bibel/",
+    "behance": "https://www.behance.net/sibelacikalinakgun",
+    "blog": "http://sibelacikalin.blogspot.com/"
+  },
+  "education": [
+    { "school": "Mimar Sinan Fine Arts University", "degree": "MFA — Yüksek Lisans", "location": "Istanbul" },
+    { "school": "Anadolu University", "degree": "BA — Lisans" }
+  ],
+  "selected_clients": [
+    "Singapore Airlines — SilverKris Magazine (Ink Global)",
+    "Wikipedia",
+    "ING Türkiye",
+    "Aksigorta",
+    "Arzum",
+    "Tekhnelogos",
+    "Can Yayınları",
+    "Timaş Yayınları",
+    "Tiburon",
+    "Anima Istanbul",
+    "Tadaa Book"
+  ],
+  "experience": [
+    { "org": "Tadaa Book", "role": "Freelance Illustrator", "note": "Children's book illustration", "period": "2024–" },
+    { "org": "Arzum", "role": "Illustrator", "note": "Illustration for Arzum 55th-year exhibition (TBWA Istanbul)", "period": "2022" },
+    { "org": "ING Türkiye", "role": "Illustrator", "note": "March 8 Women's Day poster (Tribal Istanbul)", "period": "2022" },
+    { "org": "Aksigorta", "role": "Illustrator", "note": "Tribal Istanbul", "period": "2021–2022" },
+    { "org": "FazlaGıda", "role": "Illustrator", "note": "App illustration", "period": "2021" },
+    { "org": "Tekhnelogos", "role": "Illustrator", "period": "2020" },
+    { "org": "Tiburon", "role": "Illustrator", "note": "Süren Bayan collection designs", "period": "2020" },
+    { "org": "Can Yayınları", "role": "Freelance Illustrator", "period": "2020" },
+    { "org": "Timaş Yayınları", "role": "Freelance Illustrator", "period": "2019" },
+    { "org": "Abm Yayınevi", "role": "Freelance Illustrator", "period": "2019" },
+    { "org": "Ink Global / SilverKris Magazine (Singapore Airlines)", "role": "Freelance Illustrator", "note": "Istanbul feature", "period": "2019" },
+    { "org": "HaritaMetod", "role": "Freelance Illustrator", "period": "2018" },
+    { "org": "Wikipedia", "role": "Freelance Illustrator", "period": "2018" },
+    { "org": "Anima Istanbul", "role": "Freelance Illustrator", "note": "Freelance illustration for animation studio", "period": "2013–2015" },
+    { "org": "Porque Design", "role": "Freelance Illustrator", "period": "2001" }
+  ],
+  "bio_draft": "Sibel Açıkalın Akgün is an illustrator and sculptor based in Istanbul. She holds an MFA from Mimar Sinan Fine Arts University and a BA from Anadolu University. Over two decades she has worked across both disciplines — from character-driven illustration for children's books, editorial and brand projects to sculptural work shown in exhibitions. Her illustration has appeared in SilverKris, the inflight magazine of Singapore Airlines, a Wikipedia commission, and campaigns through agencies such as TBWA and Tribal Istanbul for clients including ING, Aksigorta and Arzum. Her freelance work has also included illustration for the animation studio Anima Istanbul. Alongside commissioned projects, she maintains a personal practice in drawing and sculpture.",
+  "_note": "DRAFT — all copy to be reviewed/rewritten by Sibel. Parsed from behance.net/sibelacikalinakgun/resume on 2026-05-21."
+}
