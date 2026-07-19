@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sibel Açıkalın Akgün">
-  <rect width="64" height="64" rx="14" fill="#b65733"/>
-  <text x="32" y="34" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="600"
-        fill="#f6f1e8" text-anchor="middle" dominant-baseline="central">S</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#d75f53"/>
+  <path d="M13 47c0-13.8 8.5-24 20-24s18 9.2 18 21c0 1.7-.6 3-2 3H15c-1.4 0-2-1.2-2-3z" fill="#f4efe5"/>
+  <circle cx="14.5" cy="43.5" r="5.5" fill="#f4efe5"/>
+  <circle cx="41" cy="41" r="2.4" fill="#26221b"/>
 </svg>
