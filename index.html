@@ -9,7 +9,7 @@
 <meta name="description" content="Sibel Açıkalın Akgün (b. 1983, Istanbul) is a multidisciplinary artist working across sculpture, painting, illustration and print. Too Much Emotion (2023–2026): cast polyester sculptures, acrylic paintings and fine art prints." />
 <meta name="author" content="Sibel Açıkalın Akgün" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
-<meta name="theme-color" content="#f4efe5" />
+<meta name="theme-color" content="#ffffff" />
 <link rel="canonical" href="https://sibelacikalinakgun.com/" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="apple-touch-icon" href="favicon.svg" />
@@ -76,22 +76,23 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
 <style>
   :root{
-    --paper:#f4efe5; --paper-2:#ece5d5; --surface:#faf7ef;
+    --paper:#ffffff; --paper-2:#ffffff; --surface:#ffffff;
     --ink:#26221b; --soft:#73695a; --line:rgba(38,34,27,.14);
-    --poppy:#d75f53; --poppy-deep:#b04a40;
+    --poppy:#E8734A; --poppy-deep:#cf5e38;
     --shadow:0 22px 48px -28px rgba(38,34,27,.5);
     --maxw:1160px;
-    --serif:"Instrument Serif",Georgia,serif;
+    --display:"Comfortaa",system-ui,-apple-system,"Segoe UI",sans-serif;
     --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
-       font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+       font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+       overflow-x:hidden;}
   a{color:inherit;text-decoration:none;}
   img{display:block;max-width:100%;height:auto;}
   .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 26px;}
@@ -99,27 +100,75 @@
   .sr-skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:10px 18px;z-index:200;}
   .sr-skip:focus{left:12px;top:12px;}
 
-  /* ── header ── */
-  header.site{position:sticky;top:0;z-index:50;background:rgba(244,239,229,.85);
-       backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line);}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;
-       padding:14px 26px;max-width:var(--maxw);margin:0 auto;}
-  .brand{font-family:var(--serif);font-size:21px;line-height:1.1;white-space:nowrap;}
-  .brand small{display:block;font-family:var(--sans);font-weight:600;font-size:10.5px;
-       letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-top:3px;}
-  nav.links{display:flex;gap:24px;font-size:14px;font-weight:500;overflow-x:auto;
-       -webkit-overflow-scrolling:touch;scrollbar-width:none;}
-  nav.links::-webkit-scrollbar{display:none;}
-  nav.links a{color:var(--soft);transition:color .2s;white-space:nowrap;padding:4px 0;}
-  nav.links a:hover{color:var(--poppy);}
+  /* ── corner menu ── */
+  /* shared hamburger icon */
+  .hamb{position:relative;display:block;width:22px;height:14px;flex:none;}
+  .hamb i{position:absolute;left:0;width:22px;height:1.5px;background:var(--ink);
+       transition:transform .3s ease,opacity .25s ease;}
+  .hamb i:nth-child(1){top:0;} .hamb i:nth-child(2){top:6px;} .hamb i:nth-child(3){top:12px;}
+  .hamb.is-open i:nth-child(1){top:6px;transform:rotate(45deg);}
+  .hamb.is-open i:nth-child(2){opacity:0;}
+  .hamb.is-open i:nth-child(3){top:6px;transform:rotate(-45deg);}
+
+  .navbox-brand{font-family:"Comfortaa","Helvetica Neue",Arial,sans-serif;font-weight:500;
+       font-size:14.5px;letter-spacing:0;line-height:1.2;
+       white-space:nowrap;color:var(--ink);}
+
+  /* resting box — absolute, so it scrolls away with the page */
+  header.site{position:absolute;top:18px;left:18px;z-index:50;}
+  .navbox{display:inline-flex;align-items:center;gap:14px;cursor:pointer;
+       background:rgba(255,255,255,.5);-webkit-backdrop-filter:saturate(140%) blur(9px);
+       backdrop-filter:saturate(140%) blur(9px);border:1px solid var(--line);border-radius:12px;
+       padding:13px 20px;box-shadow:0 6px 20px -14px rgba(38,34,27,.4);
+       transition:border-color .2s;font-family:var(--sans);}
+  .navbox:hover{border-color:var(--ink);}
+  .navbox:hover .hamb i{background:var(--poppy);}
+
+  /* floating toggle — fixed, appears once the page is scrolled */
+  .menu-float{position:fixed;top:18px;left:18px;z-index:110;cursor:pointer;
+       display:flex;align-items:center;justify-content:center;width:50px;height:50px;
+       background:rgba(255,255,255,.5);-webkit-backdrop-filter:saturate(140%) blur(9px);
+       backdrop-filter:saturate(140%) blur(9px);border:1px solid var(--line);border-radius:12px;
+       box-shadow:0 8px 24px -14px rgba(38,34,27,.5);pointer-events:none;
+       opacity:0;transform:translateY(-8px);transition:opacity .3s ease,transform .3s ease,border-color .2s;}
+  .menu-float.show{opacity:1;transform:none;pointer-events:auto;}
+  .menu-float:hover{border-color:var(--ink);}
+  .menu-float:hover .hamb i{background:var(--poppy);}
+
+  /* expanded panel — fixed corner box */
+  .menu-panel{position:fixed;top:18px;left:18px;z-index:130;
+       width:min(272px,calc(100vw - 36px));
+       background:rgba(255,255,255,.62);-webkit-backdrop-filter:saturate(140%) blur(14px);
+       backdrop-filter:saturate(140%) blur(14px);border:1px solid var(--line);border-radius:14px;
+       padding:15px 22px 20px;box-shadow:0 20px 50px -24px rgba(38,34,27,.55);
+       opacity:0;visibility:hidden;transform:translateY(-8px);transform-origin:top left;
+       transition:opacity .28s ease,transform .3s cubic-bezier(.2,.7,.2,1),visibility .28s;}
+  .menu-panel.open{opacity:1;visibility:visible;transform:none;}
+  .menu-panel-top{display:flex;align-items:center;gap:14px;padding-bottom:6px;}
+  .menu-close{background:none;border:none;padding:0;margin:0;cursor:pointer;
+       display:flex;align-items:center;height:14px;}
+  .menu-close:hover .hamb i{background:var(--poppy);}
+
+  .menu-links{display:flex;flex-direction:column;padding:8px 0 4px;}
+  .menu-links a{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+       color:var(--ink);padding:9px 0;transition:color .2s,padding-left .25s;}
+  .menu-links a:hover{color:var(--poppy);padding-left:6px;}
+
+  .menu-panel-foot{display:flex;flex-direction:column;gap:5px;margin-top:12px;
+       padding-top:14px;border-top:1px solid var(--line);}
+  .menu-panel-foot a{font-size:12.5px;color:var(--soft);text-decoration:underline;
+       text-underline-offset:3px;text-decoration-thickness:1px;width:fit-content;}
+  .menu-panel-foot a:hover{color:var(--poppy);}
 
   /* ── hero ── */
-  .hero{padding-top:clamp(54px,8vw,104px);padding-bottom:clamp(44px,6vw,80px);}
-  .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,5vw,64px);align-items:center;}
-  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,8.6vw,118px);
-       line-height:.94;letter-spacing:-.015em;margin:20px 0 0;}
-  .hero h1 em{color:var(--poppy);}
-  .hero .years{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2vw,24px);
+  .hero{padding-top:clamp(54px,8vw,104px);padding-bottom:0;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,5vw,64px);align-items:end;}
+  .hero-grid>div{align-self:center;padding-bottom:clamp(30px,5vw,64px);}
+  .hero-figure{align-self:end;}
+  .hero h1{font-family:var(--display);font-weight:600;font-size:clamp(50px,7.6vw,104px);
+       line-height:1.02;letter-spacing:-.01em;margin:20px 0 0;}
+  .hero h1 em{color:var(--poppy);font-style:normal;}
+  .hero .years{font-family:var(--sans);font-size:clamp(16px,1.7vw,20px);letter-spacing:.02em;
        color:var(--soft);margin:14px 0 0;}
   .hero .lede{font-size:clamp(16.5px,1.7vw,19px);color:var(--soft);max-width:44ch;margin:20px 0 30px;}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
@@ -129,18 +178,17 @@
   .btn.primary:hover{background:var(--poppy);border-color:var(--poppy);}
   .btn.ghost{border-color:var(--line);}
   .btn.ghost:hover{border-color:var(--ink);}
-  .hero-figure{position:relative;margin:0;}
-  .hero-figure::before{content:"";position:absolute;inset:8% -5% -6% 6%;background:var(--paper-2);
-       border-radius:58% 42% 55% 45% / 52% 55% 45% 48%;z-index:0;}
-  .hero-figure img{position:relative;z-index:1;border-radius:10px;box-shadow:var(--shadow);}
-  .hero-figure figcaption{position:relative;z-index:1;font-size:13px;color:var(--soft);
-       margin-top:14px;text-align:right;}
-  .hero-figure figcaption em{font-family:var(--serif);font-size:15px;color:var(--ink);}
+  .hero-figure{position:relative;margin:0;width:100%;aspect-ratio:2.0;}
+  .hero-slide{position:absolute;inset:0;background-position:bottom center;
+       background-size:contain;background-repeat:no-repeat;opacity:0;transition:opacity 1.1s ease;}
+  .hero-slide.on{opacity:1;}
+  .hero-slide.s1{background-image:url(images/hero-fnl-1.webp);}
+  .hero-slide.s2{background-image:url(images/hero-fnl-2.webp);}
 
   /* ── sections ── */
   section{padding:clamp(52px,7vw,92px) 0;}
   .sec-head{margin-bottom:clamp(30px,4vw,48px);}
-  .sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.6vw,54px);
+  .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(30px,4vw,46px);
        letter-spacing:-.01em;margin:10px 0 0;}
   .sec-head .note{color:var(--soft);font-size:15px;margin:10px 0 0;max-width:62ch;}
 
@@ -148,8 +196,8 @@
   #statement{border-top:1px solid var(--line);}
   .statement{max-width:780px;margin:0 auto;text-align:center;}
   .statement .mark{width:54px;margin:0 auto 26px;}
-  .statement h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.4vw,40px);
-       line-height:1.3;margin:18px 0 26px;}
+  .statement h2{font-family:var(--display);font-weight:500;font-size:clamp(23px,3vw,34px);
+       line-height:1.4;margin:18px 0 26px;letter-spacing:-.01em;}
   .statement p{font-size:clamp(16.5px,1.8vw,19px);color:var(--soft);margin:0 0 18px;}
   .statement p strong{color:var(--ink);font-weight:500;}
 
@@ -167,12 +215,12 @@
   .angles button img{width:76px;height:60px;object-fit:cover;}
   .angles button:hover{opacity:1;}
   .angles button[aria-pressed="true"]{border-color:var(--poppy);opacity:1;}
-  .work-cap h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,38px);
-       line-height:1.1;margin:0 0 12px;}
+  .work-cap h3{font-family:var(--display);font-weight:600;font-size:clamp(25px,2.7vw,34px);
+       line-height:1.15;margin:0 0 12px;letter-spacing:-.01em;}
   .work-cap .series{font-size:12px;letter-spacing:.18em;text-transform:uppercase;
        color:var(--poppy);font-weight:600;margin:0 0 14px;}
   .work-cap dl{margin:0;font-size:15px;color:var(--soft);}
-  .work-cap dl div{display:flex;gap:14px;padding:7px 0;border-top:1px solid var(--line);}
+  .work-cap dl div{display:flex;gap:14px;padding:4px 0;}
   .work-cap dt{width:86px;flex:none;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
        color:var(--soft);padding-top:2px;}
   .work-cap dd{margin:0;color:var(--ink);}
@@ -184,14 +232,14 @@
   .painting img{border-radius:10px;box-shadow:var(--shadow);cursor:zoom-in;width:100%;background:var(--surface);}
   .painting figcaption{display:flex;justify-content:space-between;align-items:baseline;
        gap:16px;flex-wrap:wrap;margin-top:14px;}
-  .painting figcaption h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.6vw,32px);margin:0;}
+  .painting figcaption h3{font-family:var(--display);font-weight:600;font-size:clamp(21px,2.3vw,28px);margin:0;letter-spacing:-.01em;}
   .painting figcaption p{margin:0;font-size:14.5px;color:var(--soft);}
 
   /* ── prints ── */
   .print-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,64px);align-items:center;}
   .print-grid figure{margin:0;max-width:460px;}
   .print-grid img{border-radius:10px;box-shadow:var(--shadow);cursor:zoom-in;}
-  .print-cap h3{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.4vw,42px);margin:10px 0 16px;}
+  .print-cap h3{font-family:var(--display);font-weight:600;font-size:clamp(26px,3vw,36px);margin:10px 0 16px;letter-spacing:-.01em;}
   .print-cap p{color:var(--soft);max-width:48ch;}
   .edition{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
   .edition span{font-size:13px;font-weight:500;border:1px solid var(--line);border-radius:999px;
@@ -203,7 +251,7 @@
   .collab-grid .intro p{font-size:clamp(16.5px,1.8vw,18.5px);color:var(--soft);}
   .collab-grid .intro p strong{color:var(--ink);font-weight:500;}
   .cv{margin:0;}
-  .cv h3{font-family:var(--serif);font-weight:400;font-size:22px;margin:0 0 10px;}
+  .cv h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0 0 10px;}
   .cv ul{list-style:none;margin:0;padding:0;font-size:14.5px;}
   .cv li{display:flex;gap:16px;padding:9px 0;border-top:1px solid var(--line);}
   .cv .yr{flex:none;width:44px;font-weight:600;color:var(--poppy);font-variant-numeric:tabular-nums;}
@@ -213,7 +261,7 @@
   /* ── about ── */
   #about{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(30px,5vw,70px);align-items:start;}
-  .about-grid .big{font-family:var(--serif);font-size:clamp(22px,2.6vw,30px);line-height:1.35;margin:10px 0 18px;}
+  .about-grid .big{font-family:var(--display);font-weight:500;font-size:clamp(20px,2.3vw,27px);line-height:1.35;margin:10px 0 18px;letter-spacing:-.01em;}
   .about-grid p{color:var(--soft);}
   .about-grid p b{color:var(--ink);font-weight:500;}
   .portrait{margin:0;position:relative;max-width:420px;justify-self:end;}
@@ -229,9 +277,9 @@
 
   /* ── contact ── */
   #contact .wrap{text-align:center;}
-  #contact h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,58px);margin:12px 0 10px;}
-  #contact h2 em{color:var(--poppy);}
-  #contact .mail{font-family:var(--serif);font-style:italic;font-size:clamp(19px,3.4vw,34px);
+  #contact h2{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,50px);margin:12px 0 10px;letter-spacing:-.01em;}
+  #contact h2 em{color:var(--poppy);font-style:normal;}
+  #contact .mail{font-family:var(--display);font-weight:500;font-size:clamp(18px,3vw,30px);
        color:var(--poppy-deep);border-bottom:1px solid var(--line);padding-bottom:3px;
        display:inline-block;max-width:100%;overflow-wrap:anywhere;}
   #contact .mail:hover{border-color:var(--poppy);}
@@ -255,7 +303,7 @@
   .lb-nav:hover{background:var(--poppy);border-color:var(--poppy);}
   .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;}
   .lb-meta{color:var(--paper);text-align:center;padding-top:16px;}
-  .lb-meta h3{font-family:var(--serif);font-weight:400;margin:0 0 4px;font-size:22px;}
+  .lb-meta h3{font-family:var(--display);font-weight:600;margin:0 0 4px;font-size:20px;}
   .lb-meta .sub{font-size:13.5px;color:#cdc2af;}
   .lb-close{position:absolute;top:16px;right:20px;color:var(--paper);font-size:34px;line-height:1;
       background:none;border:none;cursor:pointer;z-index:3;}
@@ -267,37 +315,64 @@
     .hero-grid,.work,.work.flip,.print-grid,.collab-grid,.about-grid{grid-template-columns:1fr;}
     .work.flip .work-media{order:0;}
     .work{align-items:start;}
-    .hero-figure{max-width:520px;}
+    .hero{padding-top:80px;padding-bottom:44px;}
+    .hero-grid>div{padding-bottom:0;}
+    .hero-figure{max-width:520px;margin:26px 0 0;}
     .portrait{justify-self:start;}
     .cv-cols .cv ul{columns:1;}
     .brand{font-size:18px;}
   }
   @media(max-width:560px){
-    .brand small{display:none;}
-    nav.links{gap:16px;font-size:13.5px;}
+    header.site{top:12px;left:12px;}
+    .menu-float{top:12px;left:12px;}
+    .menu-panel{top:12px;left:12px;}
+    .navbox{padding:11px 16px;gap:11px;}
+    .navbox-brand{font-size:16px;}
   }
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     .reveal{opacity:1;transform:none;transition:none;}
+    .menu-panel,.menu-float{transition:opacity .2s ease;transform:none;}
   }
 </style>
 </head>
 
 <body>
   <a class="sr-skip" href="#sculpture">Skip to work</a>
-  <header class="site">
-    <div class="nav">
-      <a class="brand" href="#top">Sibel Açıkalın Akgün<small>Artist — Istanbul</small></a>
-      <nav class="links" aria-label="Primary">
-        <a href="#sculpture">Sculpture</a>
-        <a href="#painting">Painting</a>
-        <a href="#prints">Prints</a>
-        <a href="#collaborations">Collaborations</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+  <!-- ── CORNER MENU (scrolls with page) ── -->
+  <header class="site" id="siteHeader">
+    <button class="navbox" id="menuOpen" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu">
+      <span class="hamb" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="navbox-brand" lang="tr">Sibel Açıkalın Akgün</span>
+    </button>
   </header>
+
+  <!-- floating toggle: appears after the header scrolls away -->
+  <button class="menu-float" id="menuFloat" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu" hidden>
+    <span class="hamb" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+
+  <!-- expanded panel (fixed top-left corner) -->
+  <div class="menu-panel" id="menuPanel" role="dialog" aria-label="Site menu" aria-hidden="true">
+    <div class="menu-panel-top">
+      <button class="menu-close" id="menuClose" aria-label="Close menu">
+        <span class="hamb is-open" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+      <a class="navbox-brand" href="#top" lang="tr">Sibel Açıkalın Akgün</a>
+    </div>
+    <nav class="menu-links" aria-label="Primary">
+      <a href="#sculpture">Sculpture</a>
+      <a href="#painting">Painting</a>
+      <a href="#prints">Prints</a>
+      <a href="#collaborations">Collaborations</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="menu-panel-foot">
+      <a href="https://www.instagram.com/sibelacikalinakgun/" target="_blank" rel="noopener">@sibelacikalinakgun</a>
+      <a href="https://www.behance.net/sibelacikalinakgun" target="_blank" rel="noopener">Behance</a>
+    </div>
+  </div>
 
   <main id="top">
     <!-- ── HERO ── -->
@@ -313,10 +388,9 @@
             <a class="btn ghost" href="#statement">Read the statement</a>
           </div>
         </div>
-        <figure class="hero-figure reveal">
-          <img src="images/sc-drowning-1.webp" alt="Drowning, Splitting, Multiplying — three cream cast-polyester figures by Sibel Açıkalın Akgün, photographed outdoors"
-               fetchpriority="high" decoding="async" width="1600" height="1076" />
-          <figcaption><em>Drowning, Splitting, Multiplying</em> — 2025, cast polyester</figcaption>
+        <figure class="hero-figure reveal" role="img" aria-label="Cast-polyester sculptures from Too Much Emotion by Sibel Açıkalın Akgün">
+          <div class="hero-slide s1 on"></div>
+          <div class="hero-slide s2"></div>
         </figure>
       </div>
     </div>
@@ -325,7 +399,7 @@
     <section id="statement" aria-label="Artist statement">
       <div class="wrap">
         <div class="statement reveal">
-          <svg class="mark" viewBox="0 0 64 40" aria-hidden="true"><path d="M6 34c0-16 10-28 26-28s26 10 26 22c0 8-6 6-10 2-5-5-12-8-16-2-3 5-9 8-16 8-6 0-10-1-10-2z" fill="#d75f53" opacity=".9"/></svg>
+          <img class="mark" src="images/acc-5.webp" alt="" aria-hidden="true" />
           <p class="overline">Artist statement</p>
           <h2>“Too Much Emotion is shaped around my experience of breaking apart and rebuilding.”</h2>
           <p>The transition between figurative and abstract forms reveals the relationship I create between my inner world and the outside world. My sculpture and painting practices develop simultaneously — for me, making is not only a form of expression, but also a way of returning to the beginning and rebuilding myself again and again.</p>
@@ -677,6 +751,62 @@
       document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
     }else{
       document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));
+    }
+
+    /* corner menu */
+    const menuPanel=document.getElementById("menuPanel"),
+          menuOpen=document.getElementById("menuOpen"),
+          menuFloat=document.getElementById("menuFloat"),
+          menuClose=document.getElementById("menuClose"),
+          siteHeader=document.getElementById("siteHeader");
+    let lastFocus=null;
+    function openMenu(trigger){
+      lastFocus=trigger||menuOpen;
+      menuPanel.classList.add("open");
+      menuPanel.setAttribute("aria-hidden","false");
+      menuOpen.setAttribute("aria-expanded","true");
+      menuFloat.setAttribute("aria-expanded","true");
+      menuClose.focus();
+    }
+    function closeMenu(returnFocus){
+      menuPanel.classList.remove("open");
+      menuPanel.setAttribute("aria-hidden","true");
+      menuOpen.setAttribute("aria-expanded","false");
+      menuFloat.setAttribute("aria-expanded","false");
+      if(returnFocus!==false && lastFocus) lastFocus.focus();
+    }
+    menuOpen.addEventListener("click",()=>openMenu(menuOpen));
+    menuFloat.addEventListener("click",()=>openMenu(menuFloat));
+    menuClose.addEventListener("click",()=>closeMenu());
+    menuPanel.querySelectorAll(".menu-links a").forEach(a=>
+      a.addEventListener("click",()=>closeMenu(false)));
+    document.addEventListener("keydown",e=>{
+      if(e.key==="Escape" && menuPanel.classList.contains("open")) closeMenu();
+    });
+    /* click outside to close */
+    document.addEventListener("click",e=>{
+      if(!menuPanel.classList.contains("open")) return;
+      if(!menuPanel.contains(e.target) && e.target!==menuOpen && !menuOpen.contains(e.target)
+         && e.target!==menuFloat && !menuFloat.contains(e.target)) closeMenu(false);
+    });
+    /* reveal floating toggle once the resting box has scrolled away */
+    function syncFloat(){
+      const gone = window.scrollY > (siteHeader.offsetTop + siteHeader.offsetHeight);
+      menuFloat.hidden=false;
+      menuFloat.classList.toggle("show", gone);
+    }
+    window.addEventListener("scroll",syncFloat,{passive:true});
+    syncFloat();
+
+    /* hero auto-crossfade carousel */
+    const heroSlides=document.querySelectorAll(".hero-slide");
+    if(heroSlides.length>1 && !matchMedia("(prefers-reduced-motion:reduce)").matches){
+      let hs=0;
+      setInterval(()=>{
+        heroSlides[hs].classList.remove("on");
+        hs=(hs+1)%heroSlides.length;
+        heroSlides[hs].classList.add("on");
+      },4500);
     }
 
     document.getElementById("yr").textContent=new Date().getFullYear();
